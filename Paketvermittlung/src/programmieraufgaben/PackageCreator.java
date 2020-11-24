@@ -51,26 +51,24 @@ public class PackageCreator {
         int count=0;
         for(int i = 0; i<words.length; i++) {
             count=sb.length()+words[i].length();
-            if (words[i].equals(""))
-            {
-                count=count+2;
-            }
+
             if(sb.indexOf(" ")==0)
             {
                 count=0;
                 sb = new StringBuffer("");
             }
             if(count <= dataPackage.getDataPackageLength()) {
-                sb.append(words[i]);
+                sb.append(words[i].trim());
             }
             else {
-                result.add(sb.toString());
+                result.add(sb.toString().trim());
                 sb = new StringBuffer(words[i]);
                 count = words[i].length();
-                if(i==words.length-1)
-                {
-                    result.add(sb.toString());
-                }
+
+            }
+            if(i==words.length-1)
+            {
+                result.add(sb.toString().trim());
             }
         }
 
